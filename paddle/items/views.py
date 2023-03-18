@@ -20,7 +20,7 @@ def new(request):
 			return redirect('items:detail', pk = item.id)
 	else:
 		form =NewItemForm()
-		
+ 		
 	title = 'new item'
 	return render(request, 'items/form.html',locals())
 
