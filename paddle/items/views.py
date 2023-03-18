@@ -10,15 +10,16 @@ def detail(request,pk):
 
 @login_required
 def new(request):
-	if request.method=='Post':
+	if request.method=='POST':
 		form=NewItemForm(request.POST,request.FILES)
+
 		if form.is_valid():
 			item = form.save(commit=False)
 			item.created_by = request.user
 			item.save()
-			return redirect(request, 'items:detail', pk = item.id)
+			return redirect('items:detail', pk = item.id)
 	else:
-		form =NewItemForm
+		form =NewItemForm()
 		
 	title = 'new item'
 	return render(request, 'items/form.html',locals())
