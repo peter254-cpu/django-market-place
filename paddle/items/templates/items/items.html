@@ -1,0 +1,58 @@
+{% extends 'core/base.html' %}
+
+
+
+{% block title%}Items{% endblock%}
+
+{% block content %}
+
+    <div class="pb-6 grid grid-cols gap-4 bg-gray-100">
+        <div class="col-span-1">
+            Side bar
+            <form method="get" action="{% url 'items:items' %}">
+                <input type="text" class="w-full py-4 px-6 border rounded-xl"name="query" value="{{ query }}" placeholder="Find items" />
+                <button class="mt-2 py-4 text-lg bg-teal-500 text-white rounded-xl">Search</button>
+
+             </form>
+
+             <hr class="my-6">
+
+             <p class="font-semibold"></p>
+             <ul>
+                {% for category in categories %}
+                     <li class="py-2 px-2 rounded-xl{% if category.id == category_id %}">
+                        <a href="{% url 'items:items' %}?query={{ query }}&category={{category.id}}bg-gray-200{% endif %}">{{ category.name }}</a>
+                     </li>
+                {% endfor %}
+             </ul>
+             <hr class="my-6">
+
+             <p class="font-semibold">Clear filters</p>
+             <ul>
+                 <li><a href="{% url 'items:items' %}" class="mt-2 py-4 px-8 inline-block bg-yellow-500 text-lg roundend-xl text-white">
+             </ul>
+             
+
+        </div>
+        <div class="col-span-3">
+
+            <div class="grid grid-cols-3 gap-3">
+                {% for item in items %}
+                <div>
+                <a href="{% url 'items:detail' item.id %}">
+                    <div>
+                        <img src="{{ item.image.url }}" class="rounded-t-xl">
+                    </div>
+                    <div class="p-6 bg-white rounded-b-xl">
+                        <h2 class="text-2xl">{{item.name}}</h2>
+                        <p class="text-gray-500">Price:{{item.price}}</p>
+                    </div>
+                </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+    </div>
+
+{% endblock %}
