@@ -8,8 +8,6 @@ class Conversation(models.Model):
 	members=models.ManyToManyField(User,related_name = 'conversations')
 	created_at=models.DateTimeField(auto_now_add = True)
 	modified_at=models.DateTimeField(auto_now= True)
-
-
 	class Meta:
 		ordering=('-modified_at',)
 

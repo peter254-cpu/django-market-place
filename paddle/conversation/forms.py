@@ -2,7 +2,6 @@ from  django import forms
 from .models import ConversationMessage
 
 class ConversationMessageForm(forms.ModelForm):
-
 	class Meta:
 		model = ConversationMessage
 		fields = ('content',)
@@ -10,6 +9,4 @@ class ConversationMessageForm(forms.ModelForm):
 		'content': forms.Textarea(attrs={
 			'class': 'w-full py-4 rounded-xl border'
 			})
-
-
 		}

@@ -11,7 +11,6 @@
 <body>
     <nav class="py-6 px-6 flex justify-between items-center border-b border-gray-200">
         <a href="/"class="text-xl font-semibold">Shop</a>
-
         <div class="space-x-6">
             <a href="{% url 'items:new' %}" class="text-lg font-semibold hover:text-gray-500">
                 New Item
@@ -19,7 +18,7 @@
             <a href="{% url 'items:items' %}" class="text-lg font-semibold hover:text-gray-500">
                 Browse
             </a>
-            <a href="#" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Inbox</a>
+            <a href="{% url 'conversation:inbox'%}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Inbox</a>
             <a href="{% url 'dashboard:index'%}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-gray-700">Dashboard</a>
             {% if request.user.is_authenticated %}
             {% else %}
